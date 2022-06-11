@@ -1,5 +1,8 @@
 package com.addressbook;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AddressBookMain {
 
     public static void main(String[] args) {
@@ -30,12 +33,12 @@ public class AddressBookMain {
         System.out.println(a1.listData);
     }*/
 
-        System.out.println("if you want to change any data of a person, reply yes/no : ");
+        System.out.println("if you want to remove contact of a person, reply y/n : ");
         String check = AddressBook.scan.nextLine();
 
 
-        if (check.equals("yes")) {
-            System.out.println("enter name whose details you want to edit : ");
+        if (check.equals("y")) {
+            System.out.println("enter name whose details you want to remove : ");
             String name = AddressBook.scan.nextLine();
 
             int i = 0;
@@ -48,7 +51,28 @@ public class AddressBookMain {
                 i++;
             }
         }
-        System.out.println(a1.listData);
+
+        System.out.println("if you want to change any data of a person, reply y/n : ");
+        check = AddressBook.scan.nextLine();
+
+        if (check.equals("y")) {
+
+            System.out.println("enter name whose details you want to edit : ");
+            String name = AddressBook.scan.nextLine();
+
+            for (Contacts cThrough : a1.listData) {
+
+                if (cThrough.getFirstName().equals(name)) {
+                    System.out.println("enter updated phone number : ");
+                    cThrough.setPhone(AddressBook.scan.next());
+                    break;
+                }
+            }
+        }
+
+        Map<String, AddressBook> map = new HashMap<>();
+        map.put("1",a1);
+        map.get(a1);
     }
 }
 
